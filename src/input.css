@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@plugin "tailwindcss-motion";
+@theme {
+	--font-poppins: "Poppins", sans-serif;
+	--color-dark-gray: #171717;
+	--color-gray: #1e1e1e;
+}

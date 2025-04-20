@@ -1,0 +1,26 @@
+{
+	"dependencies": {
+		"@tailwindcss/cli": "^4.1.4",
+		"cors": "^2.8.5",
+		"dotenv": "^16.5.0",
+		"express": "^5.1.0",
+		"node-fetch": "^3.3.2",
+		"tailwindcss": "^4.1.4",
+		"uglify-js": "^3.19.3"
+	},
+	"scripts": {
+		"dev:tailwind": "tailwindcss -i ./src/input.css -o ./src/output.css --watch --minify",
+		"dev:js": "nodemon --watch ./src/script.js --ext js --exec \"uglifyjs ./src/script.js -o ./src/script-min.js --compress --mangle\"",
+		"dev:server": "node server/server.js",
+		"dev": "concurrently \"npm run dev:tailwind\" \"npm run dev:js\" \"npm run dev:server\"",
+		"build:tailwind": "tailwindcss -i ./src/input.css -o ./src/output.css --minify",
+		"build:js": "uglifyjs ./src/script.js -o ./src/script.min.js --compress --mangle",
+		"build": "npm run build:tailwind && npm run build:js",
+		"start": "node server/server.js"
+	},
+	"devDependencies": {
+		"concurrently": "^9.1.2",
+		"nodemon": "^3.1.9",
+		"tailwindcss-motion": "^1.1.0"
+	}
+}
