@@ -13,10 +13,10 @@
 		"dev:js": "nodemon --watch ./src/script.js --ext js --exec \"uglifyjs ./src/script.js -o ./src/script-min.js --compress --mangle\"",
 		"dev:server": "node server/server.js",
 		"dev": "concurrently \"npm run dev:tailwind\" \"npm run dev:js\" \"npm run dev:server\"",
-		"build:tailwind": "tailwindcss -i ./src/input.css -o ./src/output.css --minify",
+		"build:tailwind": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --minify",
 		"build:tailwind-vercel": "npx @tailwindcss/cli -i input.css -o output.css --minify",
-		"build:js-vercel": "uglifyjs script.js -o script.min.js --compress --mangle",
-		"build:js": "uglifyjs ./src/script.js -o ./src/script.min.js --compress --mangle",
+		"build:js-vercel": "uglifyjs script.js -o script-min.js --compress --mangle",
+		"build:js": "uglifyjs ./src/script.js -o ./src/script-min.js --compress --mangle",
 		"build": "npm run build:tailwind && npm run build:js",
 		"build-vercel": "npm run build:tailwind-vercel && npm run build:js-vercel",
 		"start": "node server/server.js"
